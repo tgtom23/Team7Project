@@ -55,10 +55,6 @@ public class CustomerAPI {
 	@GetMapping("/byname/{username}")
 	public ResponseEntity<?> lookupCustomerByNameGet(@PathVariable("username") String username,
 			UriComponentsBuilder uri) {
-		//  Workshop:  Write an implementation to look up a customer by name.  Think about what
-		//  your response should be if no customer matches the name the caller is searching for.
-		//  With the data model implemented in CustomersRepository, do you need to handle more than
-		//  one match per request?
 		Iterator<Customer> customers = repo.findAll().iterator();
 		while(customers.hasNext()) {
 			Customer cust = customers.next();
@@ -73,9 +69,6 @@ public class CustomerAPI {
 	//lookupCustomerByName POST
 	@PostMapping("/byname")
 	public ResponseEntity<?> lookupCustomerByNamePost(@RequestBody String username, UriComponentsBuilder uri) {
-		//  Workshop:  Write an implementation to look up a customer by name, using POST semantics
-		//  rather than GET.  You should be able to make use of most of your implementation for
-		//  lookupCustomerByNameGet().  
 		Iterator<Customer> customers = repo.findAll().iterator();
 		while(customers.hasNext()) {
 			Customer cust = customers.next();
@@ -93,9 +86,6 @@ public class CustomerAPI {
 			@RequestBody Customer newCustomer,
 			@PathVariable("customerId") long customerId) 
 	{
-		//  Workshop:  Write an implementation to update or create a new customer with an HTTP PUT, with the 
-		//  requestor specifying the customer ID.  Are there error conditions to be handled?  How much data
-		//  validation should you implement considering that customers are stored in a CustomersRepository object.
 		if (newCustomer.getId()!=customerId
 				|| newCustomer.getName()==null
 				|| newCustomer.getEmail() == null) {
@@ -107,12 +97,6 @@ public class CustomerAPI {
 	
 	@DeleteMapping("/{customerId}")
 	public ResponseEntity<?> deleteCustomerById(@PathVariable("customerId") long id) {
-		//  Implement a method to delete a customer.  What is an appropriate response? 
-		//
-		//  For discussion (do not worry about implementation):  What are some ways of handling 
-		//  a "delete"?  Is it always the right thing from a business point of view to literally 
-		//  delete a customer entry?  If you did actually delete a customer entry, are there issues
-		//  you could potentially run into later? 
 		repo.deleteById(id);
 		return ResponseEntity.ok().build();
 	}	
