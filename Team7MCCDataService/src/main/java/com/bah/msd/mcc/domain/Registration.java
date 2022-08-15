@@ -2,6 +2,7 @@ package com.bah.msd.mcc.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +15,11 @@ public class Registration {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	long id;
+	
+	@Column(name="EVENT_ID")
 	String event_id;	
+	
+	@Column(name="CUSTOMER_ID")
 	String customer_id;	
 	Date registration_date;	
 	String notes;
