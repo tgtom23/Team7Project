@@ -1,6 +1,6 @@
 node {
     stage ("Checkout DataService"){
-        git branch: 'main', url: 'https://github.com/tgtom23/Team7Project.git'
+        git branch: 'day3_restapi', url: 'https://github.com/tgtom23/Team7Project.git'
     }
     
     stage ("Gradle Build - DataService") {
