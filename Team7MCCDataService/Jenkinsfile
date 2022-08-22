@@ -4,11 +4,11 @@ node {
     }
     
     stage ("Gradle Build - DataService") {
-        sh 'gradle clean build'
+        sh 'gradle -b Team7MCCDataService/build.gradle clean build'
     }
     
     stage ("Gradle Bootjar-Package - DataService") {
-        sh 'gradle bootjar'
+        sh 'gradle -b Team7MCCDataService/build.gradle  bootjar'
     }
     
     stage('User Acceptance Test - DataService') {
@@ -19,7 +19,7 @@ node {
 	
 	  if(response=="Yes") {
 	    stage('Release - DataService') {
-	      sh 'gradle build -x test'
+	      sh 'gradle -b Team7MCCDataService/build.gradle  build -x test'
 	      sh 'echo Release this version'
 	    }
 	  }
