@@ -13,7 +13,7 @@ node {
     
     stage ("Containerize the app-docker build - DataApi") {
     	sh 'cd Team7MCCDataService/'
-        sh 'docker build --rm -t event-data:v1.0 -f Team7MCCDataService/.'
+        sh 'docker build --rm -t -f event-data:v1.0 Team7MCCDataService/.'
     }
     
     stage ("Inspect the docker image - DataApi"){
